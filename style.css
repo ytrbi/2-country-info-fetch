@@ -25,6 +25,27 @@ body {
   align-items: center;
 }
 
+.search-bar {
+  font-size: 1.8rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 0.7rem;
+}
+
+.btn-search {
+  border: none;
+  font-size: 1.8rem;
+  padding: 1rem 3rem;
+  border-radius: 0.7rem;
+  color: white;
+  background-color: orangered;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
 .countries {
   display: flex;
   font-size: 2rem;

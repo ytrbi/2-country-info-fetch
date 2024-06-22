@@ -1,6 +1,7 @@
 'use strict';
 
-const btn = document.querySelector('.btn-country');
+const searchBar = document.querySelector('#search-bar');
+const btnSearch = document.querySelector('.btn-search');
 const countriesContainer = document.querySelector('.countries');
 
 // Function to render country data
@@ -28,6 +29,7 @@ const getCountryData = function (country) {
     fetch(`https://restcountries.com/v3.1/name/${country}`)
         .then(response => response.json())
         .then(data => {
+            countriesContainer.innerHTML = ''; // Clear previous results
             renderCountry(data[0]);
 
             const neighbor = data[0].borders?.[0];
@@ -40,5 +42,23 @@ const getCountryData = function (country) {
         .then(data => renderCountry(data[0], 'neighbour'))
         .catch(err => console.error(`${err} 💥💥💥`));
 };
+
+// Event listener for search button
+btnSearch.addEventListener('click', function () {
+    const country = searchBar.value;
+    if (country) {
+        getCountryData(country);
+    }
+});
+
+// Optional: trigger search on pressing Enter key
+searchBar.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        const country = searchBar.value;
+        if (country) {
+            getCountryData(country);
+        }
+    }
+});
 
 getCountryData('usa');
